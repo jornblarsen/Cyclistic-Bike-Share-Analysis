@@ -1,15 +1,15 @@
 # Cyclistic-Bike-Share-Analysis
 Coursera Google Data Analytics Certificate Capstone
 
-**Introduction**
+## Introduction
 
 In this case study, I was told to imagine I worked for a fictional bike-share company, Cyclistic, and I needed to answer some business questions by following the six steps of the data analysis process: Ask, Prepare, Process, Analyze, Share, and Act.
 
-**Scenario / Business Task**
+## Scenario / Business Task
 
 The director of marketing at Cyclistic believes that the key to the company's future growth is maximizing the number of annual members. Thus, I was tasked with leveraging the last 12 months of bike trip data to understand how Cyclistic's casual riders differ from annual members, who pay a subscription. Using the insight gained from the data analysis, me and my team would design a new marketing strategy to best convert our casual riders into annual members.
 
-**Data Sources & Preparation**
+## Data Sources & Preparation
 ```sql
 CREATE OR REPLACE TABLE `project-b4912155-c932-494a-b31.cyclistic_data.jun_2025_to_may_2026_trips` AS
 SELECT * FROM `project-b4912155-c932-494a-b31.cyclistic_data.jun_2025_trips`
@@ -36,7 +36,7 @@ SELECT * FROM `project-b4912155-c932-494a-b31.cyclistic_data.apr_2026_trips`
 UNION ALL
 SELECT * FROM `project-b4912155-c932-494a-b31.cyclistic_data.may_2026_trips`
 ```
-**Data Cleaning & Processing**
+## Data Cleaning & Processing
 
 While standard guidelines suggest removing trips under 60 seconds, a deeper analysis of the Cyclistic dataset revealed a high volume of trips lasting between 1 and 3 minutes where the start and end stations were completely identical. I deduced that these represented mechanical swaps or immediate cancellations rather than real consumer utility. I instituted a conditional cleaning rule to remove trips under 3 minutes only if the origin and destination matched, protecting the integrity of the true trip-duration averages.
 
@@ -91,7 +91,7 @@ Out of the initial annual dataset, a total of 195,913 rows (approx. 3.35% of the
 
 When sorting ride lengths in descending order, I discovered a significant cluster of trips capping out right at 1,439 minutes (24 hours), indicating system timeouts or unreturned assets. To prevent these outliers from artificially inflating the average ride duration, I analyzed the trip distribution and determined that over 98% of trips naturally conclude within 3 hours. I applied a filter to exclude any trips exceeding 24 hours (or 3 hours, depending on what you chose) to ensure accurate reporting on standard user behavior.
 
-Ran a grouping query to find the "cliff":
+**Ran a grouping query to find the "cliff":**
 
 ```sql
 SELECT 
@@ -112,9 +112,7 @@ Re-ran my main cleaning query to filter out rides > 180 minutes (3 hours)
 Filtered down from 5652790 rows to 5641726	(99.8%)
 In total, 5,848,703 to 5641726	
 
-**Key Insights & Visualizations**
-
-Calculated the mean of ride_length:
+**Calculated the mean of ride_length:**
 
 ```sql
 SELECT
@@ -124,7 +122,7 @@ FROM
 ```
 Result: 14.080016458320307 mins
 
-Calculate max ride_length
+**Calculate max ride_length:**
 ```sql
 SELECT
 	MAX(ride_length_seconds)/60 as max_ride_length_mins
@@ -133,7 +131,7 @@ FROM
 ```
 Result: 180.98333333333332 mins
 
-Calculated the mode of day_of_week:
+**Calculated the mode of day_of_week:**
 
 ```sql
 SELECT
@@ -148,7 +146,7 @@ ORDER BY
 ```
 <img width="246" height="211" alt="image" src="https://github.com/user-attachments/assets/7a2d27bc-978a-4452-ab9d-dd4d8e259086" />
 
-Calculate average ride_length for members
+**Calculate average ride_length for members:**
 ```sql
 SELECT
 	AVG(ride_length_seconds)/60 AS avg_member_ride_length_min
@@ -159,7 +157,7 @@ WHERE
 ```
 Result: 11.815538006743516 (mins)
 
-Average ride_length for casuals
+**Average ride_length for casuals:**
 ```sql
 SELECT
 	AVG(ride_length_seconds)/60 AS avg_casual_ride_length_min
@@ -170,7 +168,7 @@ WHERE
 ```
 Result: 18.241123202802097 (mins)
 
-Average ride_length for members for each day of the week
+**Average ride_length for members for each day of the week:**
 ```sql
 SELECT
 	day_of_week,
@@ -187,7 +185,7 @@ ORDER BY
 ```
 <img width="377" height="211" alt="image" src="https://github.com/user-attachments/assets/4211f659-04dd-45e1-821a-c3e770405fba" />
 
-Average ride_length for casuals for each day of the week
+**Average ride_length for casuals for each day of the week:**
 ```sql
 SELECT
 	day_of_week,
@@ -204,7 +202,7 @@ ORDER BY
 ```
 <img width="422" height="211" alt="image" src="https://github.com/user-attachments/assets/55353933-4be9-45e0-b41b-847e0b3d030f" />
 
-Total number of member trips per day
+**Total number of member trips per day:**
 ```sql
 SELECT
 	day_of_week,
@@ -220,7 +218,7 @@ ORDER BY
 ```
 <img width="247" height="211" alt="image" src="https://github.com/user-attachments/assets/f4530dca-708a-4a54-bd5b-e772d97241e1" />
 
-Total number of casual trips per day
+**Total number of casual trips per day:**
 ```sql
 SELECT
 	day_of_week,
@@ -236,5 +234,10 @@ ORDER BY
 ```
 <img width="249" height="211" alt="image" src="https://github.com/user-attachments/assets/b96563c9-b842-4c30-b98e-0fb571a885e1" />
 
+## Key Insights & Visualizations
 
-**Data-Driven Recommendations**
+<div class='tableauPlaceholder' id='viz1782754704411' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Go&#47;GoogleDataAnalyticsCertificateCapstone_17827537169210&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='GoogleDataAnalyticsCertificateCapstone_17827537169210&#47;Dashboard1' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Go&#47;GoogleDataAnalyticsCertificateCapstone_17827537169210&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>
+
+https://public.tableau.com/views/GoogleDataAnalyticsCertificateCapstone_17827537169210/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
+
+## Data-Driven Recommendations
