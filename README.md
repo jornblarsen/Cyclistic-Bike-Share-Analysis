@@ -241,3 +241,21 @@ ORDER BY
 https://public.tableau.com/views/GoogleDataAnalyticsCertificateCapstone_17827537169210/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
 
 ## Data-Driven Recommendations
+
+**1. Introduce a Weekend-Focused or Seasonal Membership Tier**
+
+The Data: Casual rider demand "explodes on weekends," whereas annual members primarily anchor weekday commutes.
+
+The Recommendation: Because casual riders predominantly use the service for weekend leisure, a standard annual commute-focused membership might not appeal to them. Cyclistic should design a specialized "Weekend Warrior" membership tier or seasonal pass tailored specifically to capture and monetize this massive weekend leisure market.
+
+**2. Market the Cost-Savings of Memberships for Long-Duration Rides**
+
+The Data: Casual riders journey significantly farther than annual members.
+
+The Recommendation: Even though casual riders take fewer total trips, their individual engagement time is massive. Marketing campaigns should explicitly target casual riders with data showing how much money they would save on these longer trips by switching from a pay-as-you-go model to an annual membership.
+
+**3. Deploy Targeted Digital Campaigns During Peak Afternoon Windows**
+
+The Data: Annual members peak sharply during standard morning and evening rush hours, but casual ridership builds gradually and curves steadily through the afternoons.
+
+The Recommendation: Instead of advertising blindly throughout the day, Cyclistic should optimize its marketing spend by targeting casual riders when they are most active. Deploying in-app notifications, digital station billboards, or promotional discounts during afternoon hours and weekends ensures you reach casual riders right at their highest point of engagement.
